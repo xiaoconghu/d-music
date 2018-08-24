@@ -4,11 +4,19 @@
 const router = require('./router');
 const App = require('@/index.vue');
 import '@/utils/validate'
-import Loading from '@/core/api-server/index'
+import Loading from '@/core/api-server/index';
 
 Vue.use(Loading);
-/* eslint-disable no-new */
 new Vue(Vue.util.extend({el: '#root', router}, App));
-router.push('/home');
+
+weex.requireModule('storage').getItem('loginInfo', function (e) {
+    if (e.result === 'success') {
+        router.push('/home');
+    } else {
+        router.push('/login')
+    }
+});
+
+
 
 
