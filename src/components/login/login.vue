@@ -35,7 +35,6 @@
         },
         methods: {
             register() {
-                console.log(111);
                 this.$router.push('/register')
             },
             wxcButtonClicked(e) {
